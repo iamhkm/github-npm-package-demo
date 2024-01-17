@@ -5,9 +5,9 @@ on:
 jobs:
   json-parser-test:
     runs-on: ubuntu-latest
-    jobs:
-  your_job_name:
-    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
