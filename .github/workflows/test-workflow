@@ -1,0 +1,29 @@
+name: json-parser-test
+on:
+  [workflow_dispatch]
+
+jobs:
+  json-parser-test:
+    runs-on: ubuntu-latest
+    jobs:
+  your_job_name:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+    - name: Get and Parse JSON
+      id: parse_json
+      run: |
+        # Simulate your JSON data (replace this with the actual command to get your JSON)
+        json_data='{"key1": "value1", "key2": {"key3": "value3"}}'
+
+        # Parse the JSON and extract the value for a specific key
+        specific_key_value=$(echo "$json_data" | jq -r '.key2.key3')
+
+        # Set the value as an environment variable
+        echo "SPECIFIC_KEY_VALUE=$specific_key_value" >> $GITHUB_ENV
+
+    - name: Use Parsed Value
+      run: |
+        echo "Using value for specific key: $SPECIFIC_KEY_VALUE"
+        # Your subsequent steps can now use the $SPECIFIC_KEY_VALUE environment variable
