@@ -1,8 +1,6 @@
 name: package-publisher
 on:
-  push:
-    branches:
-      - main
+  [workflow_dispatch]
 
 jobs:
   publish-package:
